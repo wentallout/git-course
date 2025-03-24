@@ -1,0 +1,11 @@
+Câu lệnh để cài đặt email và name là:
+
+
+```
+git config --global user.name "PW - Khoa"
+
+```
+
+```
+git config --global user.email "wentallout@gmail.com"
+```
