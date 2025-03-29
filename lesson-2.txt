@@ -1,0 +1,47 @@
+1. Giải thích các câu lệnh:
+- git init: Khởi tạo một repository Git mới trong thư mục hiện tại.
+- git add <file_name>: Thêm một file cụ thể vào staging area (vùng chờ) để chuẩn bị commit.
+- git add .: Thêm tất cả các file đã thay đổi trong thư mục hiện tại vào staging area.
+- git commit -m "message": Tạo một commit mới với các thay đổi trong staging area, kèm theo message mô tả commit đó.
+
+2.
+
+a. Tạo 3 file: file1, file2, file3
+
+Working Directory: file1, file2, file3
+
+b. Chạy lệnh: git init
+
+Working Directory: file1, file2, file3
+Staging Area: (trống)
+Repository: (trống)
+
+c. Chạy lệnh: git commit -m "init"
+(Commit không có tác dụng vì chưa có file nào trong staging area)
+
+Working Directory: file1, file2, file3
+Staging Area: (trống)
+Repository: (trống)
+
+
+d. Chạy lệnh: git add file1
+
+Working Directory: file2, file3
+Staging Area: file1
+Repository: (trống)
+
+e. Chạy lệnh: git commit -m "add file1"
+
+Giải thích: phải có gì đó trong staging area thì ta mới commit được, khi commit thì file1 đi vào repository
+
+Working Directory: file2, file3
+Staging Area: (trống)
+Repository: file1
+
+f. Chạy lệnh: git add file
+
+(Lệnh này không có tác dụng vì hiện không có file nào tên "file")
+
+Working Directory: file2, file3
+Staging Area: (trống)
+Repository: file1
