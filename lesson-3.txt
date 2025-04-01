@@ -1,0 +1,127 @@
+1. Giải thích các câu lệnh:
+
+- `git commit --amend`: Sửa đổi commit cuối cùng (thêm file hoặc sửa message)
+- `git commit --amend -m "<message>"`: Sửa message của commit cuối cùng
+- `git restore --staged <file>`: Đưa file từ staging area về lại working directory
+- `git reset HEAD~1`: Xóa commit cuối cùng, đưa các thay đổi về working directory
+
+Tình huống ví dụ:
+Bạn đánh máy nhanh và bị lỗi chính tả
+
+```
+git commit -m "Fix navigtion bug"
+```
+
+# Sửa lại commit message sai chính tả
+```
+git commit --amend -m "Fix navigation bug"
+```
+
+2. Trạng thái các file và commits:
+
+a. Tạo 3 file: file1, file2, file3
+
+b. Chạy lệnh: git init
+
+- Working Directory: file1, file2, file3
+- Staging Area:
+- Repository:
+- Commits:
+
+c. Chạy lệnh: git commit -m "init project"
+
+(Không có tác dụng vì staging area trống, phải có gì đó trong staging area thì mới commit được)
+
+- Working Directory: file1, file2, file3
+- Staging Area:
+- Repository:
+- Commits:
+
+
+d. Chạy lệnh: git add file1
+
+- Working Directory: file2, file3
+- Staging Area: file1
+- Repository:
+- Commits:
+
+e. Chạy lệnh: git commit -m "add file"
+
+Working Directory: file2, file3
+Staging Area: (trống)
+Repository: file1
+Commits: "add file"
+
+f. Chạy lệnh: git add .
+
+- Working Directory:
+- Staging Area: file2, file3
+- Repository: file1
+- Commits: "add file"
+
+g. Chạy lệnh: git restore --staged file2
+
+`restore` đơn giản là nó đưa file nào đó từ staging về working directory.
+
+- Working Directory: file2
+- Staging Area: file3
+- Repository: file1
+- Commits: "add file"
+
+h. Chạy lệnh: git commit -m "add all files"
+
+đẩy file trong staging vào repository
+
+- Working Directory: file2
+- Staging Area:
+- Repository: file1, file3
+- Commits: "add file", "add all files"
+
+i. Chạy lệnh: `git reset HEAD~1`
+
+xoá commit gần nhất nên file3 về lại working directory
+
+- Working Directory: file2, file3
+- Staging Area: 
+- Repository: file1
+- Commits: "add file"
+
+3. Folder lesson-3-git với .gitignore:
+
+a. Chạy lệnh git init
+
+- Working Directory: 
+- Staging Area: 
+- Repository: 
+
+b. Tạo file file1.txt, file2.txt, oops/file3.txt
+
+Working Directory: file1.txt, file2.txt, oops/file3.txt
+Staging Area: (trống)
+Repository: (trống)
+
+c. Thêm file .gitignore với nội dung:
+
+```
+file1.txt
+oops/
+```
+
+- Working Directory: .gitignore, file1.txt, file2.txt, oops/file3.txt
+- Staging Area:
+- Repository:
+
+d. Chạy lệnh: `git add .`
+
+- Working Directory: file1.txt, oops/file3.txt (các file này đang bị ignore bởi .gitignore)
+- Staging Area: .gitignore, file2.txt
+- Repository:
+
+e. Chạy lệnh: git commit -m "init project"
+
+Đưa file từ staging vào repository
+
+- Working Directory: file1.txt, oops/file3.txt (các file bị ignore)
+- Staging Area:
+- Repository: .gitignore, file2.txt
+- Commits: "init project"
