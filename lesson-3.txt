@@ -1,20 +1,53 @@
 1. Giải thích các câu lệnh:
 
-- `git commit --amend`: Sửa đổi commit cuối cùng (thêm file hoặc sửa message)
-- `git commit --amend -m "<message>"`: Sửa message của commit cuối cùng
-- `git restore --staged <file>`: Đưa file từ staging area về lại working directory
-- `git reset HEAD~1`: Xóa commit cuối cùng, đưa các thay đổi về working directory
+a. git commit --amend:
+- Sửa đổi commit cuối cùng (thêm file hoặc sửa message)
+Ví dụ:
+```
+# Quên thêm file config.json vào commit cuối
+git add config.json
+git commit --amend --no-edit  # Thêm file vào commit cuối, giữ nguyên message
 
-Tình huống ví dụ:
-Bạn đánh máy nhanh và bị lỗi chính tả
+# Vừa thêm file vừa sửa message
+git add forgot.js
+git commit --amend -m "Add complete feature"
+```
+
+b. git commit --amend -m "<message>":
+
+- Sửa message của commit cuối cùng
+
+Ví dụ:
 
 ```
+# Sửa lỗi chính tả trong message
 git commit -m "Fix navigtion bug"
+git commit --amend -m "Fix navigation bug"
+
 ```
 
-# Sửa lại commit message sai chính tả
+c. git restore --staged <file>:
+- Đưa file từ staging area về lại working directory
+Ví dụ:
 ```
-git commit --amend -m "Fix navigation bug"
+# Lỡ add file không muốn commit
+git add secret.txt config.json
+git restore --staged secret.txt  # Chỉ bỏ secret.txt ra khỏi staging
+
+# Bỏ nhiều file khỏi staging
+git restore --staged *.log
+git restore --staged test.js test.css
+```
+
+d. git reset HEAD~1:
+
+- Xóa commit cuối cùng, đưa các thay đổi về working directory
+
+Ví dụ:
+```
+# Xóa commit cuối vì commit nhầm
+git reset HEAD~1  
+
 ```
 
 2. Trạng thái các file và commits:
